@@ -1,0 +1,36 @@
+﻿<Window x:Class="import3D.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:helix="http://helix-toolkit.org/wpf"
+        xmlns:local="clr-namespace:import3D"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowState="Maximized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <helix:HelixViewport3D x:Name="helixControl" ShowFrameRate="True" ZoomExtentsWhenLoaded="True" ZoomAroundMouseDownPoint="True" RotateAroundMouseDownPoint="True" >
+            <!--相机位置也很重要，位置不对，看到的模型就很奇怪-->
+            <helix:HelixViewport3D.Camera>
+                <PerspectiveCamera FieldOfView="45" FarPlaneDistance="2000" LookDirection="0,0,-414.387754871885" NearPlaneDistance=".1" Position="9.9475983006414E-14,91.037123633789,414.387754871885"  UpDirection="0,1,0"/>
+            </helix:HelixViewport3D.Camera>
+            <!--很重要，没有灯光场景是黑的-->
+            <helix:DefaultLights></helix:DefaultLights>
+            <ModelVisual3D x:Name="model"></ModelVisual3D>
+        </helix:HelixViewport3D>
+        <Grid Grid.Row="1" Grid.RowSpan="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="F_16_btn" Content="选择模型"   Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="F_16_btn_Click" Grid.ColumnSpan="2"/>
+        </Grid>
+
+    </Grid>
+</Window>
